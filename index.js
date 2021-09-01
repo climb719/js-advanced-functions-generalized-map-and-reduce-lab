@@ -11,18 +11,18 @@ function map(sourceArray, callback) {
 
 
   function reduce(sourceArray, callback, startingPoint) {
-    let value
+    let total;
     if (startingPoint) {
-      value = startingPoint
-    for (let i = 0; i < sourceArray.length; i++ ) {
-      value = callback(sourceArray[i], value)
-    } 
-    return value
-  } else {
-    value = sourceArray[0]
-    for (let i = 0; i < sourceArray.length; i++ ) {
-      value = callback(sourceArray[i], value)
-    } 
-    return value
+      total = startingPoint;
+      for (let i = 0; i < sourceArray.length; i++) {
+        total = callback(sourceArray[i], total);
+      }
+      return total;
+    } else {
+      total = sourceArray[0];
+      for (let i = 1; i < sourceArray.length; i++) {
+        total = callback(sourceArray[i], total);
+      }
+      return total;
+    }
   }
-}
