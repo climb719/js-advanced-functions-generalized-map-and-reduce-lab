@@ -11,9 +11,18 @@ function map(sourceArray, callback) {
 
 
   function reduce(sourceArray, callback, startingPoint) {
+    let value
     if (startingPoint) {
+      value = startingPoint
     for (let i = 0; i < sourceArray.length; i++ ) {
-      
-    }
-    }
+      value = callback(sourceArray[i], value)
+    } 
+    return value
+  } else {
+    value = sourceArray[0]
+    for (let i = 0; i < sourceArray.length; i++ ) {
+      value = callback(sourceArray[i], value)
+    } 
+    return value
   }
+}
